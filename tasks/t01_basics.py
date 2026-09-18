@@ -18,7 +18,7 @@ def task_02(total_seconds):
         task_02(59) == (0, 0, 59)
         task_02(0) == (0, 0, 0)
     """
-    return ( total_seconds//3600, (total_seconds%3600)//60, total_seconds//60)
+    return ( total_seconds//3600, (total_seconds%3600)//60, total_seconds%60)
 
 
 def task_03(fahrenheit):
