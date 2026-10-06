@@ -15,8 +15,13 @@ def hw_05():
         acc(0) == 8
         acc(-10) == -2
     """
-    raise NotImplementedError("Реализуйте hw_05")
+    count = 0
+    def k(value):   
+        nonlocal count
+        count += value
+        return count
 
+    return k
 
 def hw_06(settings, defaults):
     """Слияние настроек.
@@ -31,4 +36,4 @@ def hw_06(settings, defaults):
             == {"тема": "тёмная", "язык": "ru"}
         hw_06({}, {"a": 1}) == {"a": 1}
     """
-    raise NotImplementedError("Реализуйте hw_06")
+    return {**defaults, **settings}

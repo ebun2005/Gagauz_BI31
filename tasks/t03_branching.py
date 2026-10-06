@@ -11,7 +11,12 @@ def task_13(n):
         task_13(-3) == -1
         task_13(0) == 0
     """
-    raise NotImplementedError("Реализуйте task_13")
+    if n<0:
+        return -1
+    elif n == 0:
+        return 0
+    else:
+        return 1
 
 
 def task_14(score):
@@ -29,7 +34,14 @@ def task_14(score):
         task_14(60) == "удовлетворительно"
         task_14(59) == "неудовлетворительно"
     """
-    raise NotImplementedError("Реализуйте task_14")
+    if score >= 90:
+        return "отлично"
+    elif 75 <= score < 90:
+        return "хорошо"
+    elif 60 <= score < 75:
+        return "удовлетворительно"
+    else:
+        return "неудовлетворительно"
 
 
 def task_15(age, is_citizen):
@@ -44,8 +56,10 @@ def task_15(age, is_citizen):
         task_15(17, True) == False
         task_15(18, True) == True
     """
-    raise NotImplementedError("Реализуйте task_15")
-
+    if age >=18 and is_citizen == True:
+        return True
+    else:
+        return False
 
 def task_16(password):
     """Валидный пароль.
@@ -62,8 +76,10 @@ def task_16(password):
         task_16("StrongPass") == False   # нет цифры
         task_16("Str1") == False         # короткий
     """
-    raise NotImplementedError("Реализуйте task_16")
-
+    if len(password) >=8 and any(c.isupper() for c in password) and any(c.isdigit() for c in password):
+        return True
+    else:
+        return False
 
 def task_17(year):
     """Високосный год.
@@ -77,7 +93,10 @@ def task_17(year):
         task_17(1900) == False   # делится на 100, но не на 400
         task_17(2000) == True    # делится на 400
     """
-    raise NotImplementedError("Реализуйте task_17")
+    if (year%4 ==0 and year%100 != 0) or year%400 ==0:
+        return True
+    else:
+        return False
 
 
 def task_18(op, a, b):
@@ -96,4 +115,18 @@ def task_18(op, a, b):
         task_18("/", 5, 0) is None
         task_18("^", 2, 3) is None
     """
-    raise NotImplementedError("Реализуйте task_18")
+    if op == "+":
+        return a+b
+    elif op == "-":
+        return a-b
+    elif op == "/":
+        if b == 0:
+            return None
+        else:
+            return a/b
+    elif op == "*":
+        return a*b
+    else:
+        return None
+    
+    
