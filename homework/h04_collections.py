@@ -13,7 +13,10 @@ def hw_11(text):
         hw_11("а б а б") == "а"
         hw_11("один") == "один"
     """
-    raise NotImplementedError("Реализуйте hw_11")
+    counts = {}
+    for word in text.split():
+        counts[word] = counts.get(word, 0) + 1
+    return max(counts, key=counts.get)
 
 
 def hw_12(matrix):
@@ -28,8 +31,7 @@ def hw_12(matrix):
         hw_12([]) == []
         hw_12([[10]]) == [10]
     """
-    raise NotImplementedError("Реализуйте hw_12")
-
+    return [sum(row) for row in matrix]
 
 def hw_13(items):
     """Убрать дубликаты, сохранив порядок.
@@ -42,7 +44,7 @@ def hw_13(items):
         hw_13(["a", "b", "a", "a"]) == ["a", "b"]
         hw_13([]) == []
     """
-    raise NotImplementedError("Реализуйте hw_13")
+    return list(dict.fromkeys(items))
 
 
 def hw_14(mapping):
@@ -57,4 +59,4 @@ def hw_14(mapping):
         hw_14({}) == {}
         hw_14({"x": (1, 2)}) == {(1, 2): "x"}
     """
-    raise NotImplementedError("Реализуйте hw_14")
+    return {value: key for key, value in mapping.items()}

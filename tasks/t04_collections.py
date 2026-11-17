@@ -12,7 +12,9 @@ def task_19(numbers):
         task_19([5]) == [5]
         task_19([1, 2, 3]) == [3, 2, 1]
     """
-    raise NotImplementedError("Реализуйте task_19")
+    return sorted(numbers, reverse=True)
+
+
 
 
 def task_20(items):
@@ -27,7 +29,7 @@ def task_20(items):
         task_20((5,)) == ()
         task_20(()) == ()
     """
-    raise NotImplementedError("Реализуйте task_20")
+    return items[1:-1]
 
 
 def task_21(a, b):
@@ -46,7 +48,11 @@ def task_21(a, b):
         }
         task_21(set(), {1}) == {"union": [1], "intersection": [], "a_minus_b": []}
     """
-    raise NotImplementedError("Реализуйте task_21")
+    return {
+        "union": sorted(a | b),
+        "intersection": sorted(a & b),
+        "a_minus_b": sorted(a - b),
+    }
 
 
 def task_22(text):
@@ -60,8 +66,10 @@ def task_22(text):
         task_22("раз два три раз два раз") == {"раз": 3, "два": 2, "три": 1}
         task_22("") == {}
     """
-    raise NotImplementedError("Реализуйте task_22")
-
+    counts = {}
+    for word in text.split():
+        counts[word] = counts.get(word, 0) + 1
+    return counts
 
 def task_23(text):
     """Палиндром.
@@ -75,8 +83,8 @@ def task_23(text):
         task_23("привет") == False
         task_23("") == True
     """
-    raise NotImplementedError("Реализуйте task_23")
-
+    cleaned = [ch.lower() for ch in text if ch.isalnum()]
+    return cleaned == cleaned[::-1]
 
 def task_24(matrix):
     """Сумма главной диагонали.
@@ -89,4 +97,4 @@ def task_24(matrix):
         task_24([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) == 15
         task_24([[10]]) == 10
     """
-    raise NotImplementedError("Реализуйте task_24")
+    return sum(matrix[i][i] for i in range(len(matrix)))
