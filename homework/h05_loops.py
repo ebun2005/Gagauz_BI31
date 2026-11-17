@@ -13,7 +13,15 @@ def hw_15(n):
         hw_15(0) == []
         hw_15(8) == [0, 1, 1, 2, 3, 5, 8, 13]
     """
-    raise NotImplementedError("Реализуйте hw_15")
+    if n <= 0:
+        return []
+    if n == 1:
+        return [0]
+
+    fib = [0, 1]
+    while len(fib) < n:
+        fib.append(fib[-1] + fib[-2])
+    return fib
 
 
 def hw_16(n):
@@ -31,8 +39,14 @@ def hw_16(n):
         hw_16(97) == True
         hw_16(7919) == True
     """
-    raise NotImplementedError("Реализуйте hw_16")
+    if n < 2:
+        return False
 
+    limit = int(n ** 0.5)
+    for d in range(2, limit + 1):
+        if n % d == 0:
+            return False
+    return True
 
 def hw_17(n):
     """FizzBuzz.
@@ -48,4 +62,14 @@ def hw_17(n):
         hw_17(15)[-1] == "fizzbuzz"
         hw_17(0) == []
     """
-    raise NotImplementedError("Реализуйте hw_17")
+    result = []
+    for i in range(1, n + 1):
+        if i % 15 == 0:
+            result.append("fizzbuzz")
+        elif i % 3 == 0:
+            result.append("fizz")
+        elif i % 5 == 0:
+            result.append("buzz")
+        else:
+            result.append(str(i))
+    return result
