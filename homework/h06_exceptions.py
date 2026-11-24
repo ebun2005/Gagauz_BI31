@@ -15,7 +15,20 @@ def hw_18(text):
         hw_18("3 x") is None
         hw_18("1 2 3") is None
     """
-    raise NotImplementedError("Реализуйте hw_18")
+    if not isinstance(text, str):
+        return None
+
+    parts = text.split(" ")
+    if len(parts) != 2:
+        return None
+
+    try:
+        first = int(parts[0])
+        second = int(parts[1])
+    except ValueError:
+        return None
+
+    return (first, second)
 
 
 def hw_19(path):
@@ -29,7 +42,11 @@ def hw_19(path):
         hw_19(<путь>) == ["раз", "два", "три"]
         hw_19(<несуществующий путь>) == []
     """
-    raise NotImplementedError("Реализуйте hw_19")
+    try:
+        with open(path, encoding="utf-8") as file:
+            return [line.rstrip("\r\n") for line in file]
+    except FileNotFoundError:
+        return []
 
 
 def hw_20(age):
@@ -49,4 +66,10 @@ def hw_20(age):
         pytest.raises(ValueError): hw_20(-1)
         pytest.raises(ValueError): hw_20(121)
     """
-    raise NotImplementedError("Реализуйте hw_20")
+    if not isinstance(age, int) or isinstance(age, bool):
+        raise TypeError("возраст должен быть целым числом")
+
+    if age < 0 or age > 120:
+        raise ValueError("возраст должен быть от 0 до 120")
+
+    return age
